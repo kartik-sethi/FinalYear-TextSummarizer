@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<div class="sum">
+<h1 class="summary-header">Here's your summary!</h1>
+</div>
+<hr />
+<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+  <p class="lead container-sm">{{text}}</p>
+  <br />
+</div>
+<hr />
+<!-- <h2>Top 5 Words by Importance</h2>
+{% for word in top_words %}
+<p class="lead container-sm">{{word}}</p>
+{% endfor %}
+<hr /> -->
+<div class="original">
+<h2>Here's your original text!</h2>
+</div>
+<p>
+  The higher the opacity, the more important a sentence is. The lower the
+  opacity, the less important the sentence is.
+</p>
+<br />
+{% for sent, weight in sents %}
+<span style="opacity: {{weight}};">{{sent}}</span>
+{% endfor %}
+<br />
+<hr />
+<a href="/">Go Back</a>
+
+{% endblock %}

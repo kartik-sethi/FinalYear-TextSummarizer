@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>Text Summarizer</title>
+  {% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    crossorigin="anonymous" />
+</head>
+<body class="bg-dark text-secondary text-center">
+  <div class="container">
+    {% block content %} {% endblock %}
+  </div>
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script>
+</body>
+</html>

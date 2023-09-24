@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container " style="width: 100%;">
+  <div class="row ">
+    <div class="col-md-12">
+      <div class="one col-md-12">
+        <h1 class="text-center" style="color: black;">Summarize Your Text</h1>
+      </div>
+      <h3 style="color:white">Upload txt file</h3>
+      <form action="/" method="post" novalidate enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-row">
+          <div class="form-group col-md-4 mx-auto mb-1" style="margin-left: 100px;">
+            <label for="file-upload" class="custom-file-upload" style="margin-left: 150px;">Choose file ^</label>
+            <input type="file" name="file" id="file-upload" class="form-control-file" style="margin-left: 150px;" accept=".txt, .pdf">
+          </div>
+          
+          <div class="form-group col-md-4 mx-auto ">
+            <label style="color:white" class="d-block mb-3 ">Select Language:</label>
+            <select name="target_language" id="target-language" class="form-control " style="width: 150px; margin-left: 200px;">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="nl">Dutch</option>
+              <option value="ru">Russian</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+            </select>
+          </div>
+          
+          <div class="form-group col-md-3 mx-auto " style="width: 100px; ">
+            <label style="color:white;" class="d-block mb-3" >Select the length</label>
+            {{ form.num_sentences(class="form-control") }}
+          </div>
+        </div>
+        
+        <div class="text-center">
+          {{ form.submit(class="btn btn-success btn-lg px-4 mt-3") }}
+        </div>
+      </form>
+      
+        <hr style="background:white; margin-top: 60px;">
+        <h3 style="color:white; margin-top: 80px;">Enter Your Text</h3>
+        <form action="" method="post" novalidate>
+          {{ form.hidden_tag() }}
+          <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="form-group">
+              <label for="text-area"></label>
+              {{ form.text( cols=100, rows=20, class="form-control col-md-12", placeholder='Enter your text here...') }}
+            </div>
+          </div>
+          <div class="form-group col-md-2 mx-auto">
+            <label style="color:white">Select the length</label>
+            {{ form.num_sentences(class="form-control") }}
+          </div>
+  
+          <div class="form-group col-md-2 mx-auto">
+            <label for="target-language" style="color:white">Select Language:</label>
+            <select name="target_language" id="target-language" class="form-control">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="nl">Dutch</option>
+              <option value="ru">Russian</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+            </select>
+          </div>
+          <div class="text-center">
+           
+          <p>{{ form.submit(class="btn btn-success btn-lg px-4 gap-6") }}</p>
+        </form>
+       
+    </div>
+  </div>
+</div>
+
+<script>
+  // Function to show an alert when a file is selected
+  function showFileSelectedAlert() {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-primary';
+    alertDiv.setAttribute('role', 'alert');
+    alertDiv.innerText = 'File selected successfully!';
+
+    const formGroup = document.querySelector('.one'); // Select the appropriate form group where you want to append the alert
+    formGroup.appendChild(alertDiv);
+
+    // Remove the alert after 2 seconds
+    setTimeout(function () {
+      formGroup.removeChild(alertDiv);
+    }, 2000); // 2000 milliseconds (2 seconds)
+  }
+
+  // Add an event listener to the file input
+  document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.querySelector('#file-upload');
+    fileInput.addEventListener('change', showFileSelectedAlert);
+  });
+</script>
+
+{% endblock %}
+
+  
+  
+ 
