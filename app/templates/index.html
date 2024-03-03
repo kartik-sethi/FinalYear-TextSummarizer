@@ -4,7 +4,7 @@
   <div class="row ">
     <div class="col-md-12">
       <div class="one col-md-12">
-        <h1 class="text-center" style="color: black;">Summarize Your Text</h1>
+        <h1 class="text-center" style="color: black;">Topic Modeling & Text Summarization</h1>
       </div>
       <h3 style="color:white">Upload txt file</h3>
       <form action="/" method="post" novalidate enctype="multipart/form-data">
@@ -17,19 +17,80 @@
           </div>
           
           <div class="form-group col-md-4 mx-auto ">
-            <label style="color:white" class="d-block mb-3 ">Select Language:</label>
+            <label style="color:white; margin-left: 230px;" class="d-block mb-3 " >Select Language:</label>
             <select name="target_language" id="target-language" class="form-control " style="width: 150px; margin-left: 200px;">
-              <option value="en">English</option>
-              <option value="hi">Hindi</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="it">Italian</option>
-              <option value="pt">Portuguese</option>
-              <option value="nl">Dutch</option>
-              <option value="ru">Russian</option>
-              <option value="ja">Japanese</option>
-              <option value="ko">Korean</option>
+              <option value="EN">English</option>
+              <option value="AF">Afrikaans</option>
+              <option value="SQ">Albanian</option>
+              <option value="AR">Arabic</option>
+              <option value="HY">Armenian</option>
+              <option value="EU">Basque</option>
+              <option value="BN">Bengali</option>
+              <option value="BG">Bulgarian</option>
+              <option value="CA">Catalan</option>
+              <option value="KM">Cambodian</option>
+              <option value="ZH">Chinese (Mandarin)</option>
+              <option value="HR">Croatian</option>
+              <option value="CS">Czech</option>
+              <option value="DA">Danish</option>
+              <option value="NL">Dutch</option>
+              <option value="ET">Estonian</option>
+              <option value="FJ">Fiji</option>
+              <option value="FI">Finnish</option>
+              <option value="FR">French</option>
+              <option value="KA">Georgian</option>
+              <option value="DE">German</option>
+              <option value="EL">Greek</option>
+              <option value="GU">Gujarati</option>
+              <option value="HE">Hebrew</option>
+              <option value="HI">Hindi</option>
+              <option value="HU">Hungarian</option>
+              <option value="IS">Icelandic</option>
+              <option value="ID">Indonesian</option>
+              <option value="GA">Irish</option>
+              <option value="IT">Italian</option>
+              <option value="JA">Japanese</option>
+              <option value="JW">Javanese</option>
+              <option value="KO">Korean</option>
+              <option value="LA">Latin</option>
+              <option value="LV">Latvian</option>
+              <option value="LT">Lithuanian</option>
+              <option value="MK">Macedonian</option>
+              <option value="MS">Malay</option>
+              <option value="ML">Malayalam</option>
+              <option value="MT">Maltese</option>
+              <option value="MI">Maori</option>
+              <option value="MR">Marathi</option>
+              <option value="MN">Mongolian</option>
+              <option value="NE">Nepali</option>
+              <option value="NO">Norwegian</option>
+              <option value="FA">Persian</option>
+              <option value="PL">Polish</option>
+              <option value="PT">Portuguese</option>
+              <option value="PA">Punjabi</option>
+              <option value="QU">Quechua</option>
+              <option value="RO">Romanian</option>
+              <option value="RU">Russian</option>
+              <option value="SM">Samoan</option>
+              <option value="SR">Serbian</option>
+              <option value="SK">Slovak</option>
+              <option value="SL">Slovenian</option>
+              <option value="ES">Spanish</option>
+              <option value="SW">Swahili</option>
+              <option value="SV">Swedish </option>
+              <option value="TA">Tamil</option>
+              <option value="TT">Tatar</option>
+              <option value="TE">Telugu</option>
+              <option value="TH">Thai</option>
+              <option value="BO">Tibetan</option>
+              <option value="TO">Tonga</option>
+              <option value="TR">Turkish</option>
+              <option value="UK">Ukrainian</option>
+              <option value="UR">Urdu</option>
+              <option value="UZ">Uzbek</option>
+              <option value="VI">Vietnamese</option>
+              <option value="CY">Welsh</option>
+              <option value="XH">Xhosa</option>
             </select>
           </div>
           
@@ -39,8 +100,13 @@
           </div>
         </div>
         
-        <div class="text-center">
-          {{ form.submit(class="btn btn-success btn-lg px-4 mt-3") }}
+        <div class="d-flex justify-content-center align-items-center" style="margin-bottom: 30px;"  >
+          <div>
+            {{ form.extract_topics(class="btn btn-primary btn-lg px-4") }}
+          </div>
+          <div style="margin-left: 17px;">
+            {{ form.submit(class="btn btn-success btn-lg px-4") }}
+          </div>
         </div>
       </form>
       
@@ -62,22 +128,87 @@
           <div class="form-group col-md-2 mx-auto">
             <label for="target-language" style="color:white">Select Language:</label>
             <select name="target_language" id="target-language" class="form-control">
-              <option value="en">English</option>
-              <option value="hi">Hindi</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="it">Italian</option>
-              <option value="pt">Portuguese</option>
-              <option value="nl">Dutch</option>
-              <option value="ru">Russian</option>
-              <option value="ja">Japanese</option>
-              <option value="ko">Korean</option>
+              <option value="EN">English</option>
+              <option value="AF">Afrikaans</option>
+              <option value="SQ">Albanian</option>
+              <option value="AR">Arabic</option>
+              <option value="HY">Armenian</option>
+              <option value="EU">Basque</option>
+              <option value="BN">Bengali</option>
+              <option value="BG">Bulgarian</option>
+              <option value="CA">Catalan</option>
+              <option value="KM">Cambodian</option>
+              <option value="ZH">Chinese (Mandarin)</option>
+              <option value="HR">Croatian</option>
+              <option value="CS">Czech</option>
+              <option value="DA">Danish</option>
+              <option value="NL">Dutch</option>
+              <option value="ET">Estonian</option>
+              <option value="FJ">Fiji</option>
+              <option value="FI">Finnish</option>
+              <option value="FR">French</option>
+              <option value="KA">Georgian</option>
+              <option value="DE">German</option>
+              <option value="EL">Greek</option>
+              <option value="GU">Gujarati</option>
+              <option value="HE">Hebrew</option>
+              <option value="HI">Hindi</option>
+              <option value="HU">Hungarian</option>
+              <option value="IS">Icelandic</option>
+              <option value="ID">Indonesian</option>
+              <option value="GA">Irish</option>
+              <option value="IT">Italian</option>
+              <option value="JA">Japanese</option>
+              <option value="JW">Javanese</option>
+              <option value="KO">Korean</option>
+              <option value="LA">Latin</option>
+              <option value="LV">Latvian</option>
+              <option value="LT">Lithuanian</option>
+              <option value="MK">Macedonian</option>
+              <option value="MS">Malay</option>
+              <option value="ML">Malayalam</option>
+              <option value="MT">Maltese</option>
+              <option value="MI">Maori</option>
+              <option value="MR">Marathi</option>
+              <option value="MN">Mongolian</option>
+              <option value="NE">Nepali</option>
+              <option value="NO">Norwegian</option>
+              <option value="FA">Persian</option>
+              <option value="PL">Polish</option>
+              <option value="PT">Portuguese</option>
+              <option value="PA">Punjabi</option>
+              <option value="QU">Quechua</option>
+              <option value="RO">Romanian</option>
+              <option value="RU">Russian</option>
+              <option value="SM">Samoan</option>
+              <option value="SR">Serbian</option>
+              <option value="SK">Slovak</option>
+              <option value="SL">Slovenian</option>
+              <option value="ES">Spanish</option>
+              <option value="SW">Swahili</option>
+              <option value="SV">Swedish </option>
+              <option value="TA">Tamil</option>
+              <option value="TT">Tatar</option>
+              <option value="TE">Telugu</option>
+              <option value="TH">Thai</option>
+              <option value="BO">Tibetan</option>
+              <option value="TO">Tonga</option>
+              <option value="TR">Turkish</option>
+              <option value="UK">Ukrainian</option>
+              <option value="UR">Urdu</option>
+              <option value="UZ">Uzbek</option>
+              <option value="VI">Vietnamese</option>
+              <option value="CY">Welsh</option>
             </select>
           </div>
-          <div class="text-center">
-           
-          <p>{{ form.submit(class="btn btn-success btn-lg px-4 gap-6") }}</p>
+          <div class="d-flex justify-content-center align-items-center" style="margin-bottom: 30px;"  >
+            <div>
+              {{ form.extract_topics(class="btn btn-primary btn-lg px-4") }}
+            </div>
+            <div style="margin-left: 17px;">
+              {{ form.submit(class="btn btn-success btn-lg px-4") }}
+            </div>
+          </div>
         </form>
        
     </div>

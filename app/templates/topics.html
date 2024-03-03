@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="sum">
+        <h1 class="summary-header">Keywords extracted from Topic Modelling!</h1>
+    </div>
+    <hr />
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" style="height: 100%;">
+        <ol class="lead container justify-content-sm-center" style="list-style-type: none; padding: 0;">
+            {% for topic in topics %}
+                <li style="margin-bottom: 10px; font-size: 1.6em;">{{ loop.index }}. {{ topic }}</li>
+            {% endfor %}
+        </ol>
+        <br />
+    </div>
+{% endblock %}

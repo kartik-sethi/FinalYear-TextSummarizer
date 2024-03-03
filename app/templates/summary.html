@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-<div class="sum">
+<div class="sum text-secondary text-center">
 <h1 class="summary-header">Here's your summary!</h1>
 </div>
 <hr />
@@ -22,7 +22,8 @@
 </p>
 <br />
 {% for sent, weight in sents %}
-<span style="opacity: {{weight}};">{{sent}}</span>
+<span style="opacity: {{ weight }} ">{{ sent }}</span>
+
 {% endfor %}
 <br />
 <hr />

@@ -6,6 +6,7 @@ from app.translation import translate_text
 from werkzeug.utils import secure_filename
 import os
 from googletrans import Translator
+from app.topic_extractor import extract_topics
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf'}
 
@@ -17,7 +18,12 @@ def index():
     summarizer = Summarizer(nlp)
     form = SubmitTextForm(size=600)
 
+   
+        
+
     if request.method == 'POST':
+  
+        
         if 'file' in request.files:
             uploaded_file = request.files['file']
             if uploaded_file.filename != '' and allowed_file(uploaded_file.filename):
@@ -31,7 +37,11 @@ def index():
                 sentences_with_weights = list(zip(sents, weighted_sentence_weights))
                 target_language = request.form['target_language']  
                 translated_summary = translate_text(summary, target_language)
-                return render_template('summary.html',  text=translated_summary, top_words=top_five_words, sentence_weights=sentence_weights, sents=sentences_with_weights)
+                if 'extract_topics' in request.form:
+                 
+                 topics = extract_topics(translated_summary)  # Call your topic extraction function
+                 return render_template('topics.html', topics=topics)
+            return render_template('summary.html',  text=translated_summary, top_words=top_five_words, sentence_weights=sentence_weights, sents=sentences_with_weights)
 
         elif form.validate_on_submit():
             text = request.form['text']
@@ -52,6 +62,10 @@ def index():
             sentences_with_weights = list(zip(sents, weighted_sentence_weights))
             target_language = request.form['target_language']  
             translated_summary = translate_text(summary, target_language)
+            if 'extract_topics' in request.form:
+             text = request.form['text']
+             topics = extract_topics(translated_summary)  # Call your topic extraction function
+             return render_template('topics.html', topics=topics)
             return render_template('summary.html',  text=translated_summary, top_words=top_five_words, sentence_weights=sentence_weights, sents=sentences_with_weights)
 
     return render_template('index.html', text='', form=form)

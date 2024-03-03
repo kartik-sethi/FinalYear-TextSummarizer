@@ -39,6 +39,9 @@ input[type="file"] {
   margin-top: 40px;
   margin-left: 44px;
 }
+.ml-2 {
+  margin-left: 2px;
+}
 .sum{
   background: rgb(99, 192, 141);
   width: 100%;

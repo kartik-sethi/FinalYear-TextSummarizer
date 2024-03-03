@@ -23,14 +23,20 @@ class Summarizer:
         return word_weights
 
     def _get_sentence_weights(self, doc, word_weights):
-        sentence_weights = {}
-        for idx, sentence in enumerate(doc.sents):
-            cleaned_sentence = [token.lemma_.lower() for token in sentence if not token.is_stop and not token.is_punct]
-            cleaned_length = len(cleaned_sentence)
-            sentence_scores = [word_weights.get(word, 0) for word in cleaned_sentence]
-            sentence_weights[idx] = sum(sentence_scores) / cleaned_length
-        
-        return sentence_weights
+       sentence_weights = {}
+       for idx, sentence in enumerate(doc.sents):
+        cleaned_sentence = [token.lemma_.lower() for token in sentence if not token.is_stop and not token.is_punct]
+        cleaned_length = len(cleaned_sentence)
+
+        # # Check if cleaned_length is zero before performing division
+        # if cleaned_length == 0:
+        #     # Handle the error, for example, by setting a default value
+        #     sentence_weights[idx] = 0
+        # else:
+        sentence_scores = [word_weights.get(word, 0) for word in cleaned_sentence]
+        sentence_weights[idx] = sum(sentence_scores) / cleaned_length
+
+       return sentence_weights
 
 
 
