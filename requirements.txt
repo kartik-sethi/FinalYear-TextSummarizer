@@ -19,7 +19,7 @@ numpy== 1.26.4
 packaging==21.3
 pathy==0.6.1
 preshed==3.0.6
-pydantic==1.8.2
+
 pyparsing==3.0.8
 requests==2.27.1
 smart-open==5.2.1
