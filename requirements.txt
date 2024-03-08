@@ -41,8 +41,8 @@ packaging==23.1
 pathy==0.10.2
 pip==24.0
 preshed==3.0.8
-pydantic==2.6.3
-pydantic_core==2.16.3
+pydantic
+pydantic_core
 pyparsing==3.0.8
 PyPDF2==3.0.1
 PyYAML==6.0.1
@@ -69,7 +69,7 @@ tokenizers==0.15.2
 torch==2.2.1
 tqdm==4.66.1
 typer==0.4.2
-typing-extensions==4.10.0
+typing-extensions
 urllib3==2.0.4
 wasabi==0.10.1
 weasel==0.3.4
