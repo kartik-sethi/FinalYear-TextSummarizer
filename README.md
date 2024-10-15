@@ -1,4 +1,4 @@
-# Flask Text Summarizer Web App
+# Flask Text Summarizer And Topic Modeler Web app
 
 This app uses a simple extractive NLP method to summarize text. Any English language text can be input and the app will return a summary. The app lets you input how long your summary should be and will default to three sentences.
 
